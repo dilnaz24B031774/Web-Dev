@@ -1,0 +1,16 @@
+<section class="product-list-section">
+  @if (displayedProducts.length > 0) {
+    <div class="product-grid">
+      @for (product of displayedProducts; track product.id) {
+        <app-product-item
+          [product]="product"
+          (deleteProduct)="onDeleteProduct($event)"
+        />
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p>😕 В этой категории нет товаров.</p>
+    </div>
+  }
+</section>

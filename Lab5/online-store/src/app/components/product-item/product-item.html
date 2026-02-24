@@ -1,0 +1,37 @@
+<div class="product-card">
+  <a [href]="product.kaspiUrl" target="_blank">
+    <img [src]="product.imageUrl" [alt]="product.name" class="product-img" />
+  </a>
+
+  <div class="card-body">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-desc">{{ product.description }}</p>
+
+    <div class="product-meta">
+      <span class="rating">{{ stars }} {{ product.rating }}</span>
+      <span class="price">{{ formattedPrice }}</span>
+    </div>
+
+    <div class="likes-row">
+      <span class="likes-count">❤ {{ product.likes }}</span>
+    </div>
+
+    <div class="card-actions">
+      <button class="btn btn-like" [class.pulse]="liked" (click)="onLike()">
+        ❤ Лайк
+      </button>
+
+      <button class="btn btn-wa" (click)="shareWhatsApp()">
+        WhatsApp
+      </button>
+
+      <button class="btn btn-tg" (click)="shareTelegram()">
+        Telegram
+      </button>
+
+      <button class="btn btn-delete" (click)="onDelete()">
+        🗑 Удалить
+      </button>
+    </div>
+  </div>
+</div>
