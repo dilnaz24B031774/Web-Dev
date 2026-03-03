@@ -1,0 +1,47 @@
+<div class="detail-container">
+  <button class="btn-back" (click)="goBack()">← Back to Albums</button>
+
+  <!-- Загрузка -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading album...</p>
+  </div>
+
+  <!-- Ошибка -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Карточка альбома -->
+  <div *ngIf="album && !loading" class="album-card">
+    <h1>Album Detail</h1>
+
+    <div class="field">
+      <label>ID</label>
+      <span># {{ album.id }}</span>
+    </div>
+
+    <div class="field">
+      <label>User ID</label>
+      <span>{{ album.userId }}</span>
+    </div>
+
+    <div class="field">
+      <label>Title</label>
+      <input
+        type="text"
+        [(ngModel)]="editTitle"
+        placeholder="Album title"
+      />
+    </div>
+
+    <div class="actions">
+      <button class="btn-save" (click)="saveTitle()" [disabled]="saving">
+        {{ saving ? 'Saving...' : '💾 Save Title' }}
+      </button>
+      <button class="btn-photos" (click)="viewPhotos()">
+        🖼️ View Photos
+      </button>
+    </div>
+
+    <p *ngIf="saveSuccess" class="success">✅ Saved successfully!</p>
+  </div>
+</div>

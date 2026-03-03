@@ -1,0 +1,23 @@
+<div class="photos-container">
+  <button class="btn-back" (click)="goBack()">← Back to Album</button>
+
+  <h1>📸 Photos for Album #{{ albumId }}</h1>
+
+  <!-- Загрузка -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading photos...</p>
+  </div>
+
+  <!-- Ошибка -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Сетка фото -->
+  <div *ngIf="!loading && !error" class="photo-grid">
+    <div class="photo-card" *ngFor="let photo of photos">
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+      <p class="photo-title">{{ photo.title }}</p>
+    </div>
+  </div>
+
+</div>
